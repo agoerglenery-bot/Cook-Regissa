@@ -1,43 +1,69 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cook Regissa</title>
+```
+<title>Cook Regissa</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
-    <main class="container">
+```
+<main class="container">
 
-        <h1>COOKED: <span id="counter">0</span></h1>
+    <h1>COOKED: <span id="counter">0</span></h1>
 
-        <h2>HAVE YOU COOKED REGISSA TODAY?</h2>
+    <h2>HAVE YOU COOKED REGISSA TODAY?</h2>
 
-        <div class="cooking-area">
+    <div class="cooking-area">
 
-            <div id="pot" class="pot">
-                🍳
+        <!-- PAN -->
+        <div id="pan" class="pan">
+
+            <div class="pan-body">
+                <div class="pan-inner"></div>
             </div>
 
-            <div id="face" class="face">
-                <img src="Regissa.webp" alt="Regissa">
-            </div>
-
-            <div id="steam" class="steam">
-                💨
-            </div>
+            <div class="pan-handle"></div>
 
         </div>
 
-        <button id="cookButton">COOK</button>
+        <!-- REGISSA -->
+        <div id="face" class="face">
+            <img src="Regissa.webp" alt="Regissa">
+        </div>
 
-    </main>
+        <!-- STEAM -->
+        <div id="steam" class="steam">
+            <span>♨</span>
+            <span>♨</span>
+            <span>♨</span>
+        </div>
 
-    <script src="script.js"></script>
+        <!-- COOKING EFFECT -->
+        <div id="sizzle" class="sizzle">
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+        </div>
+
+    </div>
+
+    <button id="cookButton" type="button">
+        🍳 COOK
+    </button>
+
+</main>
+
+<script src="script.js"></script>
+```
 
 </body>
 </html>
