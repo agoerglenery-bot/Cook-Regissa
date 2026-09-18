@@ -1,33 +1,24 @@
 let cooked = 0;
 
 const counter = document.getElementById("counter");
-const button = document.getElementById("cookButton");
+const cookButton = document.getElementById("cookButton");
+const pan = document.getElementById("pan");
+const regissa = document.getElementById("regissa");
 
-const pot = document.getElementById("pot");
-const face = document.getElementById("face");
-const steam = document.getElementById("steam");
-
-button.addEventListener("click", function () {
+cookButton.addEventListener("click", function () {
 
     // Increase counter
     cooked++;
 
-    // Update counter on screen
+    // Update number
     counter.textContent = cooked;
 
-    // Start animations
-    pot.classList.remove("cooking");
-    face.classList.remove("cooking-face");
-    steam.classList.remove("cooking-steam");
+    // Restart animation
+    pan.classList.remove("cook-animation");
 
     // Force browser to restart animation
-    void pot.offsetWidth;
-    void face.offsetWidth;
-    void steam.offsetWidth;
+    void pan.offsetWidth;
 
-    // Add animation classes
-    pot.classList.add("cooking");
-    face.classList.add("cooking-face");
-    steam.classList.add("cooking-steam");
+    pan.classList.add("cook-animation");
 
 });
