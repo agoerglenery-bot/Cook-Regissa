@@ -1,3 +1,4 @@
+```javascript
 let cooked = 0;
 
 const counter = document.getElementById("counter");
@@ -10,15 +11,16 @@ cookButton.addEventListener("click", function () {
     // Increase counter
     cooked++;
 
-    // Update number
+    // Update counter
     counter.textContent = cooked;
 
-    // Restart animation
+    // Restart pan animation
     pan.classList.remove("cook-animation");
 
-    // Force browser to restart animation
+    // Force animation to restart
     void pan.offsetWidth;
 
     pan.classList.add("cook-animation");
 
 });
+```
