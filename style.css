@@ -10,183 +10,178 @@ body {
     justify-content: center;
     align-items: center;
 
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
-    background: #f5e6c8;
+    background: #f7d774;
+
+    overflow: hidden;
 }
 
 .container {
-    text-align: center;
-    width: 90%;
+    width: 100%;
     max-width: 700px;
+
+    text-align: center;
+
+    padding: 30px;
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 42px;
+    line-height: 1.1;
+
+    margin: 0 0 20px;
+
+    font-weight: 900;
+}
+
+.counter {
+    font-size: 32px;
+    font-weight: bold;
+
     margin-bottom: 20px;
 }
 
-h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
+#counter {
+    font-size: 48px;
 }
 
 .cooking-area {
     position: relative;
 
-    width: 400px;
+    width: 350px;
     height: 300px;
 
-    margin: auto;
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* PAN */
+#regissa {
+    width: 180px;
+    height: 180px;
 
-.pot {
+    object-fit: contain;
+
+    border-radius: 50%;
+
+    position: relative;
+    z-index: 2;
+}
+
+#pan {
     position: absolute;
 
-    left: 50%;
-    bottom: 30px;
+    font-size: 260px;
 
-    transform: translateX(-50%);
+    line-height: 1;
 
-    font-size: 180px;
+    z-index: 3;
 
-    transition: transform 0.2s;
+    pointer-events: none;
+
+    transform: rotate(0deg);
 }
 
-/* FACE */
-
-.face {
-    position: absolute;
-
-    left: 50%;
-    bottom: 125px;
-
-    transform: translateX(-50%);
-
-    font-size: 80px;
-
-    transition: all 0.3s;
-}
-
-/* STEAM */
-
-.steam {
-    position: absolute;
-
-    left: 50%;
-    bottom: 220px;
-
-    transform: translateX(-50%);
-
-    font-size: 50px;
-
-    opacity: 0;
-}
-
-/* COOK BUTTON */
-
-button {
+#cookButton {
     border: none;
 
-    padding: 20px 60px;
+    background: #e63946;
+    color: white;
 
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 900;
+
+    padding: 18px 60px;
 
     border-radius: 15px;
 
-    background: #ff6b35;
-    color: white;
-
     cursor: pointer;
+
+    box-shadow: 0 8px 0 #a4161a;
 
     transition: transform 0.1s;
 }
 
-button:hover {
-    transform: scale(1.05);
+#cookButton:hover {
+    transform: translateY(-2px);
 }
 
-button:active {
-    transform: scale(0.95);
+#cookButton:active {
+    transform: translateY(6px);
+
+    box-shadow: 0 2px 0 #a4161a;
 }
 
-/* COOKING ANIMATION */
 
-.cooking {
-    animation: shake 0.5s ease;
+/* Cooking animation */
+
+.cook-animation {
+    animation: cook 0.8s ease-in-out;
 }
 
-.face.cooking-face {
-    animation: cookFace 0.8s ease;
-}
-
-.steam.cooking-steam {
-    animation: steam 1s ease;
-}
-
-/* PAN SHAKING */
-
-@keyframes shake {
+@keyframes cook {
 
     0% {
-        transform: translateX(-50%) rotate(0deg);
+        transform: rotate(0deg) translateY(0);
     }
 
-    25% {
-        transform: translateX(-50%) rotate(-8deg);
+    20% {
+        transform: rotate(-8deg) translateY(-20px);
     }
 
-    50% {
-        transform: translateX(-50%) rotate(8deg);
+    40% {
+        transform: rotate(8deg) translateY(-35px);
     }
 
-    75% {
-        transform: translateX(-50%) rotate(-5deg);
+    60% {
+        transform: rotate(-6deg) translateY(-15px);
+    }
+
+    80% {
+        transform: rotate(4deg) translateY(-5px);
     }
 
     100% {
-        transform: translateX(-50%) rotate(0deg);
+        transform: rotate(0deg) translateY(0);
     }
-
 }
 
-/* FACE GETTING COOKED */
 
-@keyframes cookFace {
+/* Mobile */
 
-    0% {
-        transform: translateX(-50%) translateY(0) scale(1);
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 28px;
     }
 
-    50% {
-        transform: translateX(-50%) translateY(25px) scale(1.15);
+    .counter {
+        font-size: 24px;
     }
 
-    100% {
-        transform: translateX(-50%) translateY(0) scale(1);
+    #counter {
+        font-size: 36px;
     }
 
-}
-
-/* STEAM */
-
-@keyframes steam {
-
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(30px);
+    .cooking-area {
+        width: 280px;
+        height: 250px;
     }
 
-    50% {
-        opacity: 1;
+    #regissa {
+        width: 140px;
+        height: 140px;
     }
 
-    100% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-40px);
+    #pan {
+        font-size: 210px;
     }
 
+    #cookButton {
+        font-size: 26px;
+        padding: 15px 45px;
+    }
 }
