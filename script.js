@@ -1,33 +1,37 @@
-let cooked = 0;
-
+```javascript
 const counter = document.getElementById("counter");
-const button = document.getElementById("cookButton");
+const cookButton = document.getElementById("cookButton");
 
-const pot = document.getElementById("pot");
 const face = document.getElementById("face");
+const pot = document.getElementById("pot");
 const steam = document.getElementById("steam");
+const container = document.querySelector(".container");
 
-button.addEventListener("click", function () {
+let cookedCount = 0;
+
+cookButton.addEventListener("click", function () {
 
     // Increase counter
-    cooked++;
+    cookedCount++;
 
-    // Update counter on screen
-    counter.textContent = cooked;
+    counter.textContent = cookedCount;
 
-    // Start animations
+    // Remove animation classes
+    face.classList.remove("cooking");
     pot.classList.remove("cooking");
-    face.classList.remove("cooking-face");
-    steam.classList.remove("cooking-steam");
+    steam.classList.remove("cooking");
+    container.classList.remove("cooking");
 
-    // Force browser to restart animation
-    void pot.offsetWidth;
+    // Force browser to restart animations
     void face.offsetWidth;
+    void pot.offsetWidth;
     void steam.offsetWidth;
+    void container.offsetWidth;
 
-    // Add animation classes
+    // Start cooking animations
+    face.classList.add("cooking");
     pot.classList.add("cooking");
-    face.classList.add("cooking-face");
-    steam.classList.add("cooking-steam");
-
+    steam.classList.add("cooking");
+    container.classList.add("cooking");
 });
+```
