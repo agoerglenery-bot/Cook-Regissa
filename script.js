@@ -1,26 +1,28 @@
-```javascript
-let cooked = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const counterEl  = document.getElementById("counter");
+  const cookButton = document.getElementById("cookButton");
+  const pan        = document.getElementById("pan");
 
-const counter = document.getElementById("counter");
-const cookButton = document.getElementById("cookButton");
-const pan = document.getElementById("pan");
-const regissa = document.getElementById("regissa");
+  // Fail loudly instead of silently
+  if (!counterEl || !cookButton || !pan) {
+    console.error("Missing element(s):", { counterEl, cookButton, pan });
+    return;
+  }
 
-cookButton.addEventListener("click", function () {
+  let cooked = 0;
 
-    // Increase counter
+  cookButton.addEventListener("click", () => {
     cooked++;
+    counterEl.textContent = cooked;
 
-    // Update counter
-    counter.textContent = cooked;
-
-    // Restart pan animation
+    // Restart the animation on every click
     pan.classList.remove("cook-animation");
-
-    // Force animation to restart
-    void pan.offsetWidth;
-
+    void pan.offsetWidth;          // force reflow
     pan.classList.add("cook-animation");
+  });
 
+  // Clean up when the animation finishes
+  pan.addEventListener("animationend", () => {
+    pan.classList.remove("cook-animation");
+  });
 });
-```
