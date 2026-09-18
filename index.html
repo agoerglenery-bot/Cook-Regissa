@@ -11,13 +11,19 @@
 
   <div class="counter">COOKED: <span id="counter" aria-live="polite">0</span></div>
 
-  <div class="cooking-area">
-    <div id="pan">
-      <div class="pan-body"></div>
-      <div class="pan-handle"></div>
-    </div>
-    <img id="regissa" src="HEIF%20Image.jpeg" alt="Regissa">
+<div class="cooking-area">
+  <div id="smoke-layer"></div>
+
+  <div id="pan">
+    <div class="pan-body"></div>
+    <div class="pan-handle"></div>
   </div>
+
+  <div id="regissa-wrap">
+    <img id="regissa" src="regissa.jpg" alt="Regissa">
+    <div id="burn-overlay"></div>
+  </div>
+</div>
 
   <button id="cookButton" type="button">COOK</button>
 
