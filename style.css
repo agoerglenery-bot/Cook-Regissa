@@ -1,3 +1,4 @@
+```css
 * {
     box-sizing: border-box;
 }
@@ -11,25 +12,24 @@ body {
     align-items: center;
 
     font-family: Arial, sans-serif;
-
-    background: #f5e6c8;
+    background: #f5f5f5;
 }
 
 .container {
     text-align: center;
-    width: 90%;
-    max-width: 700px;
 }
 
 h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
+    font-size: 48px;
+    margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 40px;
 }
+
+/* Cooking area */
 
 .cooking-area {
     position: relative;
@@ -40,153 +40,231 @@ h2 {
     margin: auto;
 }
 
-/* PAN */
+/* Pan */
 
 .pot {
     position: absolute;
 
     left: 50%;
-    bottom: 30px;
+    bottom: 20px;
 
     transform: translateX(-50%);
 
     font-size: 180px;
 
-    transition: transform 0.2s;
+    z-index: 1;
+
+    transition: transform 0.15s;
 }
 
-/* FACE */
+/* Face */
 
 .face {
     position: absolute;
 
     left: 50%;
-    bottom: 125px;
+    bottom: 90px;
 
     transform: translateX(-50%);
 
-    font-size: 80px;
+    z-index: 2;
 
-    transition: all 0.3s;
+    transition: transform 0.15s;
 }
 
-/* STEAM */
+.face img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+
+    /* Makes the photo look like it's sitting in the pan */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Steam */
 
 .steam {
     position: absolute;
 
     left: 50%;
-    bottom: 220px;
+    top: 20px;
 
     transform: translateX(-50%);
 
     font-size: 50px;
 
     opacity: 0;
+
+    z-index: 3;
 }
 
-/* COOK BUTTON */
+/* COOK button */
 
-button {
-    border: none;
+#cookButton {
+    margin-top: 20px;
 
-    padding: 20px 60px;
+    padding: 18px 60px;
 
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
 
-    border-radius: 15px;
+    border: none;
+    border-radius: 12px;
 
     background: #ff6b35;
     color: white;
 
     cursor: pointer;
 
+    box-shadow: 0 5px 0 #c94d20;
+
     transition: transform 0.1s;
 }
 
-button:hover {
+#cookButton:hover {
     transform: scale(1.05);
 }
 
-button:active {
+#cookButton:active {
     transform: scale(0.95);
 }
 
-/* COOKING ANIMATION */
+/* =========================================
+   COOKING ANIMATIONS
+   ========================================= */
 
-.cooking {
-    animation: shake 0.5s ease;
+/* Face bounce + shake + rotate */
+
+.face.cooking {
+    animation: cookFace 0.8s ease-in-out;
 }
-
-.face.cooking-face {
-    animation: cookFace 0.8s ease;
-}
-
-.steam.cooking-steam {
-    animation: steam 1s ease;
-}
-
-/* PAN SHAKING */
-
-@keyframes shake {
-
-    0% {
-        transform: translateX(-50%) rotate(0deg);
-    }
-
-    25% {
-        transform: translateX(-50%) rotate(-8deg);
-    }
-
-    50% {
-        transform: translateX(-50%) rotate(8deg);
-    }
-
-    75% {
-        transform: translateX(-50%) rotate(-5deg);
-    }
-
-    100% {
-        transform: translateX(-50%) rotate(0deg);
-    }
-
-}
-
-/* FACE GETTING COOKED */
 
 @keyframes cookFace {
 
     0% {
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translateX(-50%) translateY(0) rotate(0deg);
     }
 
-    50% {
-        transform: translateX(-50%) translateY(25px) scale(1.15);
+    15% {
+        transform: translateX(-55%) translateY(-35px) rotate(-12deg);
+    }
+
+    30% {
+        transform: translateX(-45%) translateY(-60px) rotate(15deg);
+    }
+
+    45% {
+        transform: translateX(-55%) translateY(-25px) rotate(-18deg);
+    }
+
+    60% {
+        transform: translateX(-45%) translateY(-50px) rotate(20deg);
+    }
+
+    75% {
+        transform: translateX(-52%) translateY(-15px) rotate(-10deg);
+    }
+
+    90% {
+        transform: translateX(-48%) translateY(-5px) rotate(6deg);
     }
 
     100% {
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translateX(-50%) translateY(0) rotate(0deg);
     }
-
 }
 
-/* STEAM */
+/* Pan shaking */
 
-@keyframes steam {
+.pot.cooking {
+    animation: shakePot 0.8s ease-in-out;
+}
+
+@keyframes shakePot {
+
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    20% {
+        transform: translateX(-55%) rotate(-5deg);
+    }
+
+    40% {
+        transform: translateX(-45%) rotate(5deg);
+    }
+
+    60% {
+        transform: translateX(-55%) rotate(-4deg);
+    }
+
+    80% {
+        transform: translateX(-47%) rotate(4deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+}
+
+/* Steam */
+
+.steam.cooking {
+    animation: steamAnimation 1s ease-out;
+}
+
+@keyframes steamAnimation {
 
     0% {
         opacity: 0;
-        transform: translateX(-50%) translateY(30px);
+        transform: translateX(-50%) translateY(30px) scale(0.5);
     }
 
-    50% {
+    30% {
         opacity: 1;
     }
 
     100% {
         opacity: 0;
-        transform: translateX(-50%) translateY(-40px);
+        transform: translateX(-50%) translateY(-80px) scale(1.5);
+    }
+}
+
+/* Screen shake */
+
+.container.cooking {
+    animation: screenShake 0.8s;
+}
+
+@keyframes screenShake {
+
+    0% {
+        transform: translateX(0);
     }
 
+    20% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
+```
