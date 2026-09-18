@@ -3,53 +3,55 @@ document.addEventListener("DOMContentLoaded", function () {
 ```
 const counter = document.getElementById("counter");
 const cookButton = document.getElementById("cookButton");
-
 const face = document.getElementById("face");
 const pan = document.getElementById("pan");
 const steam = document.getElementById("steam");
 const sizzle = document.getElementById("sizzle");
 
+let cookedCount = 0;
+
 // Load saved counter
-let cookedCount = Number(localStorage.getItem("cookedCount")) || 0;
+const savedCount = localStorage.getItem("cookedCount");
+
+if (savedCount !== null) {
+    cookedCount = parseInt(savedCount, 10);
+}
 
 counter.textContent = cookedCount;
 
 
-function restartAnimation(element) {
+function playAnimation(element) {
 
     if (!element) {
         return;
     }
 
-    // Remove animation
     element.classList.remove("cooking");
 
-    // Force browser reflow
+    // Force browser to reset animation
     void element.offsetWidth;
 
-    // Start animation again
     element.classList.add("cooking");
 }
 
 
-cookButton.addEventListener("click", function () {
+cookButton.onclick = function () {
 
     // Increase counter
-    cookedCount++;
+    cookedCount = cookedCount + 1;
 
-    // Display counter
+    // Update counter
     counter.textContent = cookedCount;
 
     // Save counter
     localStorage.setItem("cookedCount", cookedCount);
 
     // Play animations
-    restartAnimation(pan);
-    restartAnimation(face);
-    restartAnimation(steam);
-    restartAnimation(sizzle);
-
-});
+    playAnimation(pan);
+    playAnimation(face);
+    playAnimation(steam);
+    playAnimation(sizzle);
+};
 ```
 
 });
