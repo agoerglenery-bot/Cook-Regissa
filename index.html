@@ -1,50 +1,27 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cook Regissa</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cook Regissa</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <h1>HAVE YOU COOKED REGISSA TODAY?</h1>
 
-    <main class="container">
+  <div class="counter">COOKED: <span id="counter" aria-live="polite">0</span></div>
 
-        <h1>HAVE YOU COOKED<br>REGISSA TODAY?</h1>
+  <div class="cooking-area">
+    <div id="pan">
+      <div class="pan-body"></div>
+      <div class="pan-handle"></div>
+    </div>
+    <img id="regissa" src="regissa.png" alt="Regissa">
+  </div>
 
-        <div class="counter">
-            COOKED: <span id="counter">0</span>
-        </div>
+  <button id="cookButton" type="button">COOK</button>
 
-        <div class="cooking-area">
-
-            <!-- Pan -->
-            <div id="pan">
-                <div class="pan-body"></div>
-                <div class="pan-handle"></div>
-            </div>
-
-            <!-- Regissa -->
-            <img
-                id="regissa"
-                src="Regissa.webp"
-                alt="Regissa"
-            >
-
-        </div>
-
-        <button id="cookButton">
-            COOK
-        </button>
-
-    </main>
-
-    <script src="script.js"></script>
-
+  <!-- script at the END of body, or add defer in <head> -->
+  <script src="script.js"></script>
 </body>
 </html>
-```
