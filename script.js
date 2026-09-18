@@ -1,57 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
+let cooked = 0;
 
-```
 const counter = document.getElementById("counter");
-const cookButton = document.getElementById("cookButton");
+const button = document.getElementById("cookButton");
+
+const pot = document.getElementById("pot");
 const face = document.getElementById("face");
-const pan = document.getElementById("pan");
 const steam = document.getElementById("steam");
-const sizzle = document.getElementById("sizzle");
 
-let cookedCount = 0;
-
-// Load saved counter
-const savedCount = localStorage.getItem("cookedCount");
-
-if (savedCount !== null) {
-    cookedCount = parseInt(savedCount, 10);
-}
-
-counter.textContent = cookedCount;
-
-
-function playAnimation(element) {
-
-    if (!element) {
-        return;
-    }
-
-    element.classList.remove("cooking");
-
-    // Force browser to reset animation
-    void element.offsetWidth;
-
-    element.classList.add("cooking");
-}
-
-
-cookButton.onclick = function () {
+button.addEventListener("click", function () {
 
     // Increase counter
-    cookedCount = cookedCount + 1;
+    cooked++;
 
-    // Update counter
-    counter.textContent = cookedCount;
+    // Update counter on screen
+    counter.textContent = cooked;
 
-    // Save counter
-    localStorage.setItem("cookedCount", cookedCount);
+    // Start animations
+    pot.classList.remove("cooking");
+    face.classList.remove("cooking-face");
+    steam.classList.remove("cooking-steam");
 
-    // Play animations
-    playAnimation(pan);
-    playAnimation(face);
-    playAnimation(steam);
-    playAnimation(sizzle);
-};
-```
+    // Force browser to restart animation
+    void pot.offsetWidth;
+    void face.offsetWidth;
+    void steam.offsetWidth;
+
+    // Add animation classes
+    pot.classList.add("cooking");
+    face.classList.add("cooking-face");
+    steam.classList.add("cooking-steam");
 
 });
