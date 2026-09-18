@@ -1,1 +1,192 @@
-style.css
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: #f5e6c8;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.cooking-area {
+    position: relative;
+
+    width: 400px;
+    height: 300px;
+
+    margin: auto;
+}
+
+/* PAN */
+
+.pot {
+    position: absolute;
+
+    left: 50%;
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    font-size: 180px;
+
+    transition: transform 0.2s;
+}
+
+/* FACE */
+
+.face {
+    position: absolute;
+
+    left: 50%;
+    bottom: 125px;
+
+    transform: translateX(-50%);
+
+    font-size: 80px;
+
+    transition: all 0.3s;
+}
+
+/* STEAM */
+
+.steam {
+    position: absolute;
+
+    left: 50%;
+    bottom: 220px;
+
+    transform: translateX(-50%);
+
+    font-size: 50px;
+
+    opacity: 0;
+}
+
+/* COOK BUTTON */
+
+button {
+    border: none;
+
+    padding: 20px 60px;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    border-radius: 15px;
+
+    background: #ff6b35;
+    color: white;
+
+    cursor: pointer;
+
+    transition: transform 0.1s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* COOKING ANIMATION */
+
+.cooking {
+    animation: shake 0.5s ease;
+}
+
+.face.cooking-face {
+    animation: cookFace 0.8s ease;
+}
+
+.steam.cooking-steam {
+    animation: steam 1s ease;
+}
+
+/* PAN SHAKING */
+
+@keyframes shake {
+
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(-50%) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(8deg);
+    }
+
+    75% {
+        transform: translateX(-50%) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+}
+
+/* FACE GETTING COOKED */
+
+@keyframes cookFace {
+
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(25px) scale(1.15);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+}
+
+/* STEAM */
+
+@keyframes steam {
+
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-40px);
+    }
+
+}
